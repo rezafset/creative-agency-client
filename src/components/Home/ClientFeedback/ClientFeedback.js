@@ -1,39 +1,23 @@
 import React from 'react';
-import customer1 from '../../../resources/images/customer1.png';
-import customer2 from '../../../resources/images/customer2.png';
-import customer3 from '../../../resources/images/customer3.png';
+import { useEffect } from 'react';
+import { useState } from 'react';
 import FeedbackCard from '../FeedbackCard/FeedbackCard';
 
 const ClientFeedback = () => {
-    const feedBack = [
-        {   
-            id: '01',
-            customerImg: customer1,
-            customerName: 'Nash Patrik',
-            customerDesignation: 'CEO, Manpol',
-            customerDetails: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore libero odit perspiciatis provident!'
-        },
-        {
-            id: '02',
-            customerImg: customer2,
-            customerName: 'Miriam Barron',
-            customerDesignation: 'CEO, Manpol',
-            customerDetails: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore libero odit perspiciatis provident!'
-        },
-        {
-            id: '03',
-            customerImg: customer3,
-            customerName: 'Nash Patrik',
-            customerDesignation: 'CEO, Manpol',
-            customerDetails: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore libero odit perspiciatis provident!'
-        }
-    ]
+    const [review, setReview] = useState([]);
+    
+    useEffect(()=>{
+        fetch('https://vast-basin-43815.herokuapp.com/reviewList')
+        .then(response=> response.json())
+        .then(data=>setReview(data))
+    } ,[])
+
     return (
-        <div className="container">
-            <h3 className="text-center pb-4 font-weight-bold">Clients <span style={{color: '#7AB259'}}>Feedback</span></h3>
+        <div className="container" id="review">
+            <h3 className="text-center pb-4 font-weight-bold"> <span style={{color: '#171B4E'}}>Clients</span>  <span style={{color: '#7AB259'}}>Feedback</span></h3>
             <div className="row">
                 {
-                    feedBack.map(feedBack=> <FeedbackCard key={feedBack.id} feedBack={feedBack}></FeedbackCard>)
+                    review.map(review=> <FeedbackCard key={review._id} review={review}></FeedbackCard>)
                 }
             </div>
         </div>

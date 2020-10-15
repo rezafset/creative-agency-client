@@ -1,18 +1,15 @@
 import React from 'react';
+import './FeedbackCard.css';
 
-const FeedbackCard = ({ feedBack }) => {
+const FeedbackCard = (props) => {
+    const {name, companyName, description} = props.review.review;
     return (
-        <div className="col-md-4 py-4 ">
-            <div class="card text-center p-3">
+        <div className="col-md-4 py-2">
+            <div class="card p-3 feedback-card">
                 <div class="card-body">
-                    <div className="d-flex">
-                        <img className="card-img" src={feedBack.customerImg} alt="" />
-                        <div className="">
-                            <h5 class="card-title ml-3 font-weight-bold">{feedBack.customerName}</h5>
-                            <h6 class="card-subtitle mb-2">{feedBack.customerDesignation}</h6>
-                        </div>
-                    </div>
-                    <p class="card-text text-secondary">{feedBack.customerDetails}</p>
+                    <h5 class="card-title font-weight-bold">{name}</h5>
+                    <h6 class="card-subtitle mb-2">{companyName}</h6>
+                    <p class="card-text text-secondary">{description}</p>
                 </div>
             </div>
         </div>

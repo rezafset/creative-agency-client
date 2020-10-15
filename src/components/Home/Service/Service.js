@@ -1,36 +1,23 @@
 import React from 'react';
-import service1 from '../../../resources/images/icons/service1.png';
-import service2 from '../../../resources/images/icons/service2.png';
-import service3 from '../../../resources/images/icons/service3.png';
+import { useEffect } from 'react';
+import { useState } from 'react';
 import ServiceCard from '../ServiceCard/ServiceCard';
 
 const Service = () => {
-    const service = [
-        {
-            icon: service1,
-            title: 'Web & Mobile Design',
-            description: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorum temporibus quo nisi laudantium, quis porro.'
+    const [service, setService] = useState([]);
 
-        },
-        {
-            icon: service2,
-            title: 'Graphic Design',
-            description: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorum temporibus quo nisi laudantium, quis porro.'
+    useEffect(() => {
+        fetch('https://vast-basin-43815.herokuapp.com/service')
+            .then(response => response.json())
+            .then(data => setService(data))
+    }, [])
 
-        },
-        {
-            icon: service3,
-            title: 'Web Development',
-            description: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorum temporibus quo nisi laudantium, quis porro.'
-
-        }
-    ]
     return (
-        <div className="container py-4">
-            <h3 className="text-center py-5 font-weight-bold">Provide Awesome <span style={{color: '#7AB259'}}>Services</span></h3>
+        <div className="container py-4" id="portfolio">
+            <h3 className="text-center py-5 font-weight-bold">Provide Awesome <span style={{ color: '#7AB259' }}>Services</span></h3>
             <div className="row">
                 {
-                    service.map(service=> <ServiceCard key={service.title} service={service}></ServiceCard>)
+                    service.map(service => <ServiceCard key={service._id} service={service}></ServiceCard>)
                 }
             </div>
         </div>
