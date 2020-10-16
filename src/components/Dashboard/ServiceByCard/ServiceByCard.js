@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { useContext } from 'react';
 import { UserContext } from '../../../App';
+import DashboardHeader from '../DashboardHeader/DashboardHeader';
 import ServiceByCardDetails from '../ServiceByCardDetails/ServiceByCardDetails';
 import Sidebar from '../SideBar/Sidebar';
 
@@ -22,8 +23,8 @@ const ServiceByCard = () => {
             <div className="col-lg-2 col-md-4 col-sm-4 col-xs-2 pr-0">
                 <Sidebar></Sidebar>
             </div>
-            <div className="col-lg-10 col-md-8 col-sm-8 col-xs-10  pl-5 py-3" style={{ backgroundColor: '#F4F7FC', height: '100vh' }}>
-                <h3>Service Card Details</h3>
+            <div className="col-lg-10 col-md-8 col-sm-8 col-xs-10 pl-0" style={{ backgroundColor: '#F4F7FC', height: '100vh' }}>
+                <DashboardHeader title={'Service Card'}></DashboardHeader>
                 <div className="row">
                     {
                         serviceByCard.map(serviceCard => <ServiceByCardDetails key={serviceCard._id} serviceCard={serviceCard}></ServiceByCardDetails>)

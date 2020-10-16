@@ -23,7 +23,7 @@ const Sidebar = () => {
     }, [])
 
     return (
-        <div className="sidebar">            
+        <div className="sidebar">
             <Link to="/">
                 <img className="brand-logo mt-3 ml-2" src={logo} alt="" />
             </Link>
@@ -31,51 +31,55 @@ const Sidebar = () => {
                 <li class="nav-item">
                     <Link to="/dashboard/welcome" class="nav-link text-dark">
                         <FontAwesomeIcon icon={faHome} className="mr-2" />
-                            <span>Dashboard</span>
-                    </Link>
-                </li>
-                <li class="nav-item">
-                    <Link to="/dashboard/order" class="nav-link text-dark">
-                        <FontAwesomeIcon icon={faCartPlus} className="mr-2" />
-                            <span>Order</span>
-                    </Link>
-                </li>
-                <li class="nav-item">
-                    <Link to="/dashboard/serviceDataCard" class="nav-link text-dark">
-                        <FontAwesomeIcon icon={faShoppingBag} className="mr-2" />
-                            <span>Service Card</span>
-                    </Link>
-                </li>
-                <li class="nav-item">
-                    <Link to="/dashboard/review" class="nav-link text-dark">
-                        <FontAwesomeIcon icon={faComment} className="mr-2" />
-                            <span>Review</span>
+                        <span>Dashboard</span>
                     </Link>
                 </li>
 
-               
-                    <div>
-                        <li class="nav-item">
-                            <Link to="/dashboard/serviceTableData" class="nav-link text-dark">
-                                <FontAwesomeIcon icon={faShoppingBag} className="mr-2" />
+                {
+                    isAdmin ?
+                        <div>
+                            <li class="nav-item">
+                                <Link to="/dashboard/serviceTableData" class="nav-link text-dark">
+                                    <FontAwesomeIcon icon={faShoppingBag} className="mr-2" />
                                     <span>Service List</span>
-                            </Link>
-                        </li>
-                        <li class="nav-item">
-                            <Link to="/dashboard/addService" class="nav-link text-dark">
-                                <FontAwesomeIcon icon={faPlus} className="mr-2" />
+                                </Link>
+                            </li>
+                            <li class="nav-item">
+                                <Link to="/dashboard/addService" class="nav-link text-dark">
+                                    <FontAwesomeIcon icon={faPlus} className="mr-2" />
                                     <span>Add Service</span>
-                            </Link>
-                        </li>
-                        <li class="nav-item">
-                            <Link to="/dashboard/makeAdmin" class="nav-link text-dark">
-                                <FontAwesomeIcon icon={faUserAlt} className="mr-2" />
+                                </Link>
+                            </li>
+                            <li class="nav-item">
+                                <Link to="/dashboard/makeAdmin" class="nav-link text-dark">
+                                    <FontAwesomeIcon icon={faUserAlt} className="mr-2" />
                                     <span>Make Admin</span>
-                            </Link>
-                        </li>
-                    </div>
+                                </Link>
+                            </li>
+                        </div>
+                        :
+                        <div>
+                            <li class="nav-item">
+                                <Link to="/dashboard/order" class="nav-link text-dark">
+                                    <FontAwesomeIcon icon={faCartPlus} className="mr-2" />
+                                    <span>Order</span>
+                                </Link>
+                            </li>
+                            <li class="nav-item">
+                                <Link to="/dashboard/serviceDataCard" class="nav-link text-dark">
+                                    <FontAwesomeIcon icon={faShoppingBag} className="mr-2" />
+                                    <span>Service Card</span>
+                                </Link>
+                            </li>
+                            <li class="nav-item">
+                                <Link to="/dashboard/review" class="nav-link text-dark">
+                                    <FontAwesomeIcon icon={faComment} className="mr-2" />
+                                    <span>Review</span>
+                                </Link>
+                            </li>
+                        </div>
+                }
 
-               
             </ul>
         </div>
     );

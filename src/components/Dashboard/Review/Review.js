@@ -1,9 +1,17 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
+import DashboardHeader from '../DashboardHeader/DashboardHeader';
 import Sidebar from '../SideBar/Sidebar';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { UserContext } from '../../../App';
+import { useContext } from 'react';
+
+toast.configure();
 
 const Review = () => {
+    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     const { register, handleSubmit, errors } = useForm();
     const history = useHistory();
     const onSubmit = data => {
@@ -18,7 +26,8 @@ const Review = () => {
             .then(response => response.json())
             .then(data => {
                 if (data) {
-                    alert('Review Added Successfully');
+                    // alert('Review Added Successfully');
+                    toast.success('Review Added Successfully')
                     history.push("/reviewList");
                 }
             })
@@ -28,11 +37,11 @@ const Review = () => {
             <div className="col-lg-2 col-md-4 col-sm-4 col-xs-2 pr-0">
                 <Sidebar></Sidebar>
             </div>
-            <div className="col-lg-10 col-md-8 col-sm-8 col-xs-10  pl-5 py-3" style={{ backgroundColor: '#F4F7FC', height: '100vh' }} >
-                <h3>Review</h3>
-                <form onSubmit={handleSubmit(onSubmit)} className="py-3">
+            <div className="col-lg-10 col-md-8 col-sm-8 col-xs-10 pl-0" style={{ backgroundColor: '#F4F7FC', height: '100vh' }} >
+                <DashboardHeader title='Review'></DashboardHeader>
+                <form onSubmit={handleSubmit(onSubmit)} className="py-5 pl-5">
                     <div className="form-group">
-                        <input type="text" name="name" ref={register({ required: true })} class="form-control w-50" placeholder="Your Name" />
+                        <input type="text" defaultValue={loggedInUser.name} name="name" ref={register({ required: true })} class="form-control w-50" placeholder="Your Name" />
                         {errors.name && <span className="error text-danger">Name is required</span>}
                     </div>
                     <div className="form-group">

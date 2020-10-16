@@ -1,8 +1,9 @@
 import React from 'react';
+import './ServiceTableShortList.css';
 
 const ServiceTableShortList = ({ serviceTableData }) => {
     return (
-        <table class="table table-borderless mt-4">
+        <table class="table table-bordered ml-3 mt-4">
             <thead>
                 <tr>
                     <th scope="col">Username</th>

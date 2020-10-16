@@ -4,7 +4,6 @@ import ServiceTableShortList from '../SeviceTableShortList/ServiceTableShortList
 const ServiceTableDataInfo = ({serviceTableData}) => {
     return (
         <div>
-            <h3>Services List</h3>
             {
                 serviceTableData.length ? 
                 <ServiceTableShortList serviceTableData={serviceTableData}></ServiceTableShortList>

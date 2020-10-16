@@ -1,9 +1,12 @@
 import React from 'react';
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { UserContext } from '../../../App';
 import logo from '../../../resources/images/logos/logo.png';
 import './NavBar.css';
 
 const NavBar = () => {
+    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     return (
         <nav style={{ backgroundColor: '#FBD062'}} class="navbar navbar-expand-lg navbar-light animate__animated  animate__fadeInUp fixed-top">
             <div className="container">
@@ -30,9 +33,16 @@ const NavBar = () => {
                         <li class="nav-item font-weight-bold">
                             <a class="nav-link mr-3" href="#contact">Contact Us</a>
                         </li>
-                        <Link to="/login">
-                            <button class="btn btn-dark text-light brand-button pb-2"> <span>Login</span> </button>
-                        </Link>
+                        {
+                            loggedInUser.email ?
+                            <Link to="/login">
+                                <button class="btn btn-dark text-light brand-button pb-2"> {loggedInUser.name} </button>
+                            </Link>
+                            :
+                            <Link to="/login">
+                                <button class="btn btn-dark text-light brand-button pb-2"> <span>Login</span> </button>
+                            </Link>
+                        }
                     </ul>
                 </div>
             </div>

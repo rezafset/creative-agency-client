@@ -25,22 +25,20 @@ const Login = () => {
         isSignIn: false,
         name: '',
         email: '',
-        password: '',
-        photo: '',
-        success: false,
-        error: ''
+        photo: ''
     })
 
     const provider = new firebase.auth.GoogleAuthProvider();
     const handleSignIn = () =>{
         firebase.auth().signInWithPopup(provider)
         .then(response => {
-          const {displayName, email} = response.user;
+          const {displayName, email, photoURL} = response.user;
           console.log(response);
           const newUser = {
             isSignIn: true,
             name: displayName,
-            email: email
+            email: email,
+            photo: photoURL
         }
           setUser(newUser);
           setLoggedInUser(newUser);
@@ -52,6 +50,7 @@ const Login = () => {
           console.log(error.message);
         })
     }
+    
     return (
         <div className="container">
             <div className="login-area d-flex align-items-center justify-content-center">

@@ -1,9 +1,17 @@
 import React from 'react';
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import DashboardHeader from '../DashboardHeader/DashboardHeader';
 import Sidebar from '../SideBar/Sidebar';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { UserContext } from '../../../App';
+import { useContext } from 'react';
+
+toast.configure();
 
 const OrderForm = () => {
+    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     const history = useHistory();
     const [info, setInfo] = useState({ status: 'Pending' });
     const [file, setFile] = useState(null);
@@ -38,7 +46,8 @@ const OrderForm = () => {
             .then(data => {
                 console.log(data);
                 if (data) {
-                    alert('Order added Successfully')
+                    // alert('Order added Successfully')
+                    toast.success('Order added Successfully');
                     history.push('/dashboard/serviceDataCard');
                 }
             })
@@ -55,8 +64,8 @@ const OrderForm = () => {
                 <Sidebar></Sidebar>
             </div>
             <div className="col-lg-10 col-md-8 col-sm-8 col-xs-10 pl-0">
+                <DashboardHeader title={'Order'}></DashboardHeader>
                 <div className="pl-5 py-3" style={{ backgroundColor: '#F4F7FC', height: '100vh' }}>
-                    <h3>Order</h3>
                     <form onSubmit={handleSubmit} className="py-3">
                         <div className="form-group">
                             <input onBlur={handleBlur} type="text" name="name" class="form-control w-50" placeholder="Enter Name" required />

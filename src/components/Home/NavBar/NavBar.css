@@ -1,18 +1,3 @@
-/* .navbar .navbar-nav .nav-item a:hover::after{
-    content: "";
-    position: relative;
-    width: 100%;
-    margin: 0 auto;
-    height: 3px;
-    background-color: green;
-    display: block;
-}
-@media (max-width: 991px) {
-    .navbar .navbar-nav .nav-item a:hover{
-        display: none;
-        visibility: hidden;
-    }
-} */
 .navbar .navbar-nav .active a::after{
     content: "";
     position: relative;
@@ -21,10 +6,4 @@
     height: 3px;
     background-color: green;
     display: block;
-}
-.navbar .navbar-nav .nav-item a{
-    transition: .6s;
-}
-.navbar .navbar-nav .nav-item a:hover{
-    transform: scale(1.1);
 }
