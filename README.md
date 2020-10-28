@@ -8,4 +8,4 @@ Overview of the project:
 6. Admin can see full user ordered services list.
 7. Admin can make another admin as well.
 
-Technology we used here: React, React Router, React Bootstrap, Firebase-auth, Heroku,  Node.js, Express.js, MongoDB.
+Technology: React, React Router, React Bootstrap, Firebase-auth, Heroku,  Node.js, Express.js, MongoDB.
