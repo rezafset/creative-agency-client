@@ -6,6 +6,7 @@ Overview of the project:
 4.	Users can give a review of those services and the review will show on the website home page.
 5. Admin can add new service and those services will show on the website.
 6. Admin can see full user ordered services list.
-7. Admin can make another admin as well.
+7. Admin can make another admin as well.\
+8. All dynamic data like services, order list , user reviews are loaded from the database.
 
 Technology: React, React Router, React Bootstrap, Firebase-auth, Heroku,  Node.js, Express.js, MongoDB.
